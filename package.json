@@ -1,0 +1,32 @@
+{
+  "name": "kc-cli",
+  "version": "1.0.0",
+  "description": "Maybe this package is only suitable for Chinese users.看云文档辅助工具",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "kc": "./index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YYago/kc-cli.git"
+  },
+  "keywords": [
+    "CLI",
+    "KanCloud"
+  ],
+  "author": "YYago",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/YYago/kc-cli/issues"
+  },
+  "homepage": "https://www.kancloud.cn/pwedu/kccli",
+  "dependencies": {
+    "chalk": "^2.4.0",
+    "glob-watcher": "^5.0.1",
+    "node-modules-custom": "^1.0.5",
+    "summarybuilder": "^1.4.2"
+  }
+}
