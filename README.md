@@ -24,3 +24,9 @@ Maybe this package is only suitable for Chinese users.
 
 **注意：** 在构建 Docx、HTML 文件之前，你需要安装 Pandoc 并添加到 PATH，也许你需要配置 pandoc，具体见 pandoc 的文档。
 
+## 版本
+
+#### v1.0.1
+
+* 升级summarybuilder 到1.4.3：**已经存在于 `SUMMARY.md` 中的markdown文件将不会显示在 `_summary.md` 中**
+
