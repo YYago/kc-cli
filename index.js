@@ -200,6 +200,7 @@ if (arg2 == "-h") {
     if (fileExt == true && path.extname(arg3) == ".css") {
         let newStyle = fs.readFileSync(arg3, { encoding: 'utf8' });
         nnmc.fs_wfSync(kc_conf.customStyle.cssFileName, newStyle, true, { encoding: 'utf8', flag: 'w' });
+        kc_log.done(`${kc_conf.customStyle.cssFileName} 已经被更新成功！新的样式将在同步后生效。`)
     } else {
         kc_log.err(`CSS文件: ${arg3}  找不到或者不是.css结尾的文件！请提供准确的CSS文件路径。`)
     }
