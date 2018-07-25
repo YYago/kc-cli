@@ -20,7 +20,7 @@ if (arg2 == "-h") {
     console.log(kc_log.helper);
     // --------- kc -v ---------
 } else if (arg2 == "-v") {
-    console.log(kc_log.done('kc-cli Version: 1.0.0'));
+    console.log(kc_log.done('kc-cli Version: 1.0.2'));
     // --------- kc init ---------
 } else if (arg2 == "init" || arg2 == "-i") {
     // 样式文件创建
@@ -200,18 +200,18 @@ if (arg2 == "-h") {
     if (fileExt == true && path.extname(arg3) == ".css") {
         let newStyle = fs.readFileSync(arg3, { encoding: 'utf8' });
         nnmc.fs_wfSync(kc_conf.customStyle.cssFileName, newStyle, true, { encoding: 'utf8', flag: 'w' });
-        kc_log.done(`${kc_conf.customStyle.cssFileName} 已经被更新成功！新的样式将在同步后生效。`)
+        console.log(kc_log.done(`${kc_conf.customStyle.cssFileName} 已经被更新成功！新的样式将在同步后生效。`))
     } else {
-        kc_log.err(`CSS文件: ${arg3}  找不到或者不是.css结尾的文件！请提供准确的CSS文件路径。`)
+        console.log(kc_log.err(`CSS文件: ${arg3}  找不到或者不是.css结尾的文件！请提供准确的CSS文件路径。`))
     }
 } else if (arg2 == "theme" && arg3 == "none") {
     let cssfileExi = fs.existsSync('style/website.css');
     if (cssfileExi == true) {
         fs.unlinkSync('style/website.css');
-        kc_log.done(` 现有的文档样式已被移除，请完成git提交并发布以更新远程文档。`)
+        console.log(kc_log.done(` 现有的文档样式已被移除，请完成git提交并发布以更新远程文档。`))
     } else {
-        kc_log.warn(`当前文档并没有使用自定义样式，无需删除。`)
+        console.log(kc_log.warn(`当前文档并没有使用自定义样式，无需删除。`))
     }
-}else {
+} else {
     console.log(kc_log.helper);
 }

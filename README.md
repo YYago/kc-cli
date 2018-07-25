@@ -38,7 +38,7 @@ Maybe this package is only suitable for Chinese users.
 #### v1.0.2（当前版本）
 
 * 修改部分命令参数。
-* 支持更改文档主题(文档样式自定义)。`kc theme [cssfilepath] | none`.
+* **支持更改文档主题(文档样式自定义)。**`kc theme [cssfilepath] | none`.
 * 升级summarybuilder 到 1.4.4 (严格模式问题)。
 * 规避严格模式问题。
 
