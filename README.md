@@ -18,7 +18,7 @@ Maybe this package is only suitable for Chinese users.
     - `kc summary ./doc1/*.md` 只会把‘./doc1/’文件夹下的`.md`文件添加到目录文件:`'_summary.md'`中。
 * `kc md` ——批量创建 `SUMMARY.md` 中列出的 Markdown 文件。意在批量创建`.md`文件。
 * `kc watch|[-w] [ignore...]` ——监视任务，当文件发生改变的时候自动执行相应的操作。结果：'kc summary' 和 'kc md'。[ignore...] 排除不监视的文件或文件夹。
-    - `kc -w` 监视当前文件夹，当相应文件发生变化时自动进行创建文件、生成目录条目的动作。**默认作用于所有文件。**
+    - `kc -w` 监视当前文件夹，当相应文件发生变化时自动进行创建文件、生成目录条目的动作。**默认作用于所有` '.md'` 文件。**
     - `kc -w default.md` ： `‘default.md’` 文件会被排除，当它发生变化时不会触发事件。
 
 **以下的命令需要配合pandoc进行（没有安装pandoc则不会有效果）：**
@@ -37,8 +37,10 @@ Maybe this package is only suitable for Chinese users.
 
 #### v1.0.2（当前版本）
 
-* 修改部分命令参数。
-* **支持更改文档主题(文档样式自定义)。**`kc theme [cssfilepath] | none`.
+* 修改部分命令参数:
+    - `kc watch` 等同于 `kc -w` 。
+    - `kc init` 等同于 `kc -i` 。
+* **支持更改文档主题(文档样式自定义):** `kc theme [cssfilepath] | none`.
 * 升级summarybuilder 到 1.4.4 (严格模式问题)。
 * 规避严格模式问题。
 
