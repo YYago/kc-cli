@@ -1,6 +1,6 @@
 {
   "name": "kc-cli",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Maybe this package is only suitable for Chinese users.看云文档辅助工具",
   "main": "index.js",
   "scripts": {
@@ -27,6 +27,6 @@
     "chalk": "^2.4.0",
     "glob-watcher": "^5.0.1",
     "node-modules-custom": "^1.0.5",
-    "summarybuilder": "^1.4.3"
+    "summarybuilder": "^1.4.4"
   }
 }

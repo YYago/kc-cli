@@ -1,3 +1,5 @@
+'use strict';
+
 const nmc = require('node-modules-custom');
 const cp = require('child_process');
 const fs = require('fs');
@@ -29,7 +31,7 @@ if(fs.existsSync(igfpath)){
 /**
  * 使用Pandoc。
  * 
- * @param {Array} opts 
+ * @param {Array} opts pandoc options
  */
 function pandoc(opts){
     cp.spawnSync('pandoc',opts);

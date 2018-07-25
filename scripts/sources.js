@@ -1,9 +1,12 @@
+'use strict';
+
 const customStyle = {
     cssFileName : "style/website.css",
     cssCode : `
  /*
- * Power By @pwedu
- * note: 这些样式可能不能完全满足你的需求，请自行删改。
+ * By @pwedu
+ * Author: https://www.kancloud.cn/@xiak
+ * Note: 这些样式可能不能完全满足你的需求，请自行删改。
  */
 /* Start------------Thanks @xiak from KanCload ------------*/
 /* 美化引用段落样式 */
@@ -112,15 +115,15 @@ const bookConf = {
             },
             "nav":[
                 {
-                    "title":"kc-cli 下载",
+                    "title":"导航1 请自行修改",
                     "url":"https://www.npmjs.com/package/kc-cli"
                 },
                 {
-                    "title":"kc-cli 源码",
+                    "title":"导航2 请自行修改",
                     "url":"https://github.com/YYago/kc-cli"
                 },
                 {
-                    "title":"kc-cli 反馈",
+                    "title":"导航3 请自行修改",
                     "url":"https://github.com/YYago/kc-cli/issues"
                 }                
                 ]

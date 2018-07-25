@@ -1,6 +1,8 @@
 #!/usr/bin/env node
+'use strict';
 
 const sb = require('summarybuilder');
+const path = require('path');
 const nnmc = require('node-modules-custom');
 const watch = require('glob-watcher');
 const kc_log = require('./scripts/logs');
@@ -20,7 +22,7 @@ if (arg2 == "-h") {
 } else if (arg2 == "-v") {
     console.log(kc_log.done('kc-cli Version: 1.0.0'));
     // --------- kc init ---------
-} else if (arg2 == "init") {
+} else if (arg2 == "init" || arg2 == "-i") {
     // 样式文件创建
     nnmc.fs_wfSync(kc_conf.customStyle.cssFileName, kc_conf.customStyle.cssCode, false, { encoding: 'utf8' });
     console.log(kc_log.done(`${kc_conf.customStyle.cssFileName} 处理完毕！`))
@@ -28,7 +30,7 @@ if (arg2 == "-h") {
     nnmc.fs_wfSync(kc_conf.bookConf.confFileName, kc_conf.bookConf.confJSON, false);
     console.log(kc_log.done(`${kc_conf.bookConf.confFileName} 处理完毕！`))
     // 封面图片检查
-    if(fs.existsSync('cover.jpg')!==true){
+    if (fs.existsSync('cover.jpg') !== true) {
         console.log(kc_log.warn('文档还没有封面图片！弄一张名为“cover.jpg”宽865px,高1155px 的图片放到文档根目录即可。'))
     }
     // .gitignore 处理
@@ -142,19 +144,19 @@ if (arg2 == "-h") {
     if (foo !== null) {
         for (let i = 0; i < foo.length; i++) {
             let docName = foo[i].replace('.md', '.html');
-            docName = kc_conf.kcOutDir.html+'code/'+ docName;
+            docName = kc_conf.kcOutDir.html + 'code/' + docName;
             outFname.push(docName)
         }
     }
     if (fs.existsSync(kc_conf.kcOutDir.html) == false) {
-        nnmc.fs_mkdirSync(kc_conf.kcOutDir.html+'code');
+        nnmc.fs_mkdirSync(kc_conf.kcOutDir.html + 'code');
     }
     for (let x = 0; x < foo.length; x++) {
         console.log(kc_log.done(`HTML 文件：${outFname[x]} 生成完成！`))
         kc_events.pandoc([foo[x], "-o", outFname[x]]);
     }
     // --------- kc watch ---------
-} else if (arg2 == "watch") {
+} else if (arg2 == "watch" || arg2 == "-w") {
     let opts = [];
     for (let i = 3; i < arg.length; i++) {
         opts.push(arg[i]);
@@ -162,10 +164,10 @@ if (arg2 == "-h") {
     let wSource;
     let sSource;
     if (opts !== null) {
-        wSource = ['./**/*.md', '!node_modules/**', '!./SUMMARY.md','!./_summary.md', '!./README.md', ...opts];
+        wSource = ['./**/*.md', '!node_modules/**', '!./SUMMARY.md', '!./_summary.md', '!./README.md', ...opts];
         sSource = ['-t', ...opts];
     } else {
-        wSource = ['./**/*.md', '!node_modules/**', '!./SUMMARY.md','!./_summary.md', '!./README.md'];
+        wSource = ['./**/*.md', '!node_modules/**', '!./SUMMARY.md', '!./_summary.md', '!./README.md'];
         sSource = ['-t'];
     }
     let watcher = watch([...wSource]);
@@ -192,7 +194,23 @@ if (arg2 == "-h") {
             console.log(kc_log.err('当前目录下没有找到SUMMARY.md文件，如果是小写的文件名，请暂时重命名为SUMMARY.md再运行命令！'));
         }
     });
-}
-else {
+    // --------- kc theme ---------
+} else if (arg2 == "theme" && arg3 !== "none") {
+    let fileExt = fs.existsSync(arg3);
+    if (fileExt == true && path.extname(arg3) == ".css") {
+        let newStyle = fs.readFileSync(arg3, { encoding: 'utf8' });
+        nnmc.fs_wfSync(kc_conf.customStyle.cssFileName, newStyle, true, { encoding: 'utf8', flag: 'w' });
+    } else {
+        kc_log.err(`CSS文件: ${arg3}  找不到或者不是.css结尾的文件！请提供准确的CSS文件路径。`)
+    }
+} else if (arg2 == "theme" && arg3 == "none") {
+    let cssfileExi = fs.existsSync('style/website.css');
+    if (cssfileExi == true) {
+        fs.unlinkSync('style/website.css');
+        kc_log.done(` 现有的文档样式已被移除，请完成git提交并发布以更新远程文档。`)
+    } else {
+        kc_log.warn(`当前文档并没有使用自定义样式，无需删除。`)
+    }
+}else {
     console.log(kc_log.helper);
 }
