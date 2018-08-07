@@ -10,12 +10,19 @@ const kc_log = require('./logs');
 function gitEvent(){
     let ignores = `
 # 排除 node_modelus
+
 node_modules
+
 # 排除 sb 输出文件
+
 _summary.md
+
 .li.json
+
 # 排除kc-cli输出文件
+
 KCout
+
 # kc end
 `;
 let igfpath = process.cwd()+'/.gitignore';
