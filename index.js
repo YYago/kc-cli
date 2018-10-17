@@ -9,6 +9,8 @@ const kc_log = require('./scripts/logs');
 const kc_conf = require('./scripts/sources');
 const kc_events = require('./scripts/events');
 const fs = require('fs');
+const getCSSfromGitHub = require('./scripts/getCSSfromGithub');
+
 let arg = process.argv;
 let arg0 = process.argv[0];
 let arg1 = process.argv[1];
@@ -20,7 +22,7 @@ if (arg2 == "-h") {
     console.log(kc_log.helper);
     // --------- kc -v ---------
 } else if (arg2 == "-v") {
-    console.log(kc_log.done('kc-cli Version: 1.0.2'));
+    console.log(kc_log.done('kc-cli Version: 1.0.4'));
     // --------- kc init ---------
 } else if (arg2 == "init" || arg2 == "-i") {
     // 样式文件创建
@@ -173,15 +175,15 @@ if (arg2 == "-h") {
     let watcher = watch([...wSource]);
     // 新增
     watcher.on('add', () => {
-        sb.SBer_summaryMDs([...sSource]);
+        sb.SBer_summaryMDs_onlyKCKLI([...sSource]);
         console.log(kc_log.done(`临时目录文件已经生成，位置：${process.cwd()}\\_summary.md`));
     });
     watcher.on('unlink', () => {
-        sb.SBer_summaryMDs([...sSource]);
+        sb.SBer_summaryMDs_onlyKCKLI([...sSource]);
         console.log(kc_log.done(`临时目录文件已经生成，位置：${process.cwd()}\\_summary.md`));
     });
     watcher.on('change', () => {
-        sb.SBer_summaryMDs([...sSource]);
+        sb.SBer_summaryMDs_onlyKCKLI([...sSource]);
         console.log(kc_log.done(`临时目录文件已经生成，位置：${process.cwd()}\\_summary.md`));
     });
     let sumWather = watch('./SUMMARY.md');
@@ -195,7 +197,7 @@ if (arg2 == "-h") {
         }
     });
     // --------- kc theme ---------
-} else if (arg2 == "theme" && arg3 !== "none") {
+} else if (arg2 == "theme" && arg3 !== "none" && arg3!==undefined) {
     let fileExt = fs.existsSync(arg3);
     if (fileExt == true && path.extname(arg3) == ".css") {
         let newStyle = fs.readFileSync(arg3, { encoding: 'utf8' });
@@ -208,10 +210,16 @@ if (arg2 == "-h") {
     let cssfileExi = fs.existsSync('style/website.css');
     if (cssfileExi == true) {
         fs.unlinkSync('style/website.css');
-        console.log(kc_log.done(` 现有的文档样式已被移除，请完成git提交并发布以更新远程文档。`))
+        console.log(kc_log.done(` 现有的文档样式已被移除，请完成 git push 操作以便更新远程文档。`))
     } else {
         console.log(kc_log.warn(`当前文档并没有使用自定义样式，无需删除。`))
     }
-} else {
+} else if(arg2 == "theme" && arg3 == "url" && arg4!==undefined){
+    if(fs.existsSync('./SUMMARY.md')){
+        getCSSfromGitHub.getCSSfromGithub(arg4,'style/website.css');
+    }else{
+        kc_log.err(`当前目录下没找到 SUMMARY.md 文件，这可能不是看云文档项目的根目录！请确认之后再执行本命令。`)
+    }
+}else {
     console.log(kc_log.helper);
 }

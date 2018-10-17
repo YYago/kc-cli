@@ -16,7 +16,7 @@ Maybe this package is only suitable for Chinese users.
 `kc md`   |  批量创建 `SUMMARY.md` 中列出的 Markdown 文件。意在批量创建`.md`文件。
 `kc [watch|-w] <ignore...>`   |  监视任务，当文件发生改变的时候自动执行相应的操作。结果：'kc summary' 和 'kc md'。`<ignore...>`排除不监视的文件或文件夹。<br>- `kc -w` 监视当前文件夹，当相应文件发生变化时自动进行创建文件、生成目录条目的动作。**默认作用于所有` '.md'` 文件。**<br>- `kc -w default.md` ： `‘default.md’` 文件会被排除，当它发生变化时不会触发事件。
 
-**以下的命令需要配合pandoc进行（没有安装pandoc则不会有效果，结果可能与期望值不一样，不推荐使用）：**
+**以下的命令需要配合pandoc进行（没有安装pandoc则不会有效果，结果可能与期望值不一样，不推荐使用，鸡肋！后续版本应该会删除）：**
 
 * `kc docx [name]`——根据 `SUMMARY.md` 中列出的文件创建 `.docx` 文件，All in one !, 所有文档都在一个`.docx`文件里。[name] 可以指定输出的文件名，省略则为：`out.docx`
 * `kc docx -s` ——根据 `SUMMARY.md` 中列出的文件创建 `.docx` 文件，一一转换，每个`.md` 有对应的.docx 文件。
@@ -26,7 +26,16 @@ Maybe this package is only suitable for Chinese users.
 **注意：** 在构建 Docx、HTML 文件之前，你需要安装 Pandoc 并添加到 PATH，也许你需要配置 pandoc，具体见 pandoc 的文档。
 
 ## 版本
-#### v1.0.3（当前版本）
+
+#### v1.0.4
+
+* Fix: 子目录需要缩进4个空格。
+* 添加从`GitHub`下载文档自定义样式CSS文件的支持（使用代码`Raw`功能）。
+    ```shll
+    kc theme url ''
+    ```
+
+#### v1.0.3
 
 * 升级依赖：[summarybuilder](https://www.npmjs.com/package/summarybuilder) 到最新版。修复BUG：类似`'* [中文版(hi)](CN/readme.md)'`这种目录创建之后会变成：`'hi]CN/readme.md'`的问题。
 
