@@ -30,9 +30,9 @@ Maybe this package is only suitable for Chinese users.
 #### v1.0.4
 
 * Fix: 子目录需要缩进4个空格。
-* 添加从`GitHub`下载文档自定义样式CSS文件的支持（使用代码`Raw`功能）。
+* 添加从`GitHub`下载文档自定义样式CSS文件的支持（使用代码`Raw`功能），例如：
     ```shll
-    kc theme url ''
+    kc theme url 'https://raw.githubusercontent.com/YYago/kc-cli/master/index.js'
     ```
 
 #### v1.0.3
