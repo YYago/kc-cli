@@ -23,18 +23,19 @@
 
 const confs = {
     less: 'theme.less', // 默认的 less 路径。
-    forWhat: 'full',    // 针对的区域，例如：'TOC',多个区域则用'full'
-    Version: 'v1',      // 版本,V+整数，例如：v1
-    Author: "YYago",    // GitHub 用户名，例如：YYago
+    forWhat: '',    // 针对的区域，例如：'TOC',多个区域则用'full'
+    Version: '',      // 版本,V+整数，例如：v1
+    Author: '',    // GitHub 用户名，例如：YYago
     HomoPage: '',       // 个人主页
-    ExampleURL: "",     // 示例文档地址
+    ExampleURL: '',     // 示例文档地址
     // 描述,可换行多行。
     Description: ``,
     // 浏览器兼容性，例如：>=IE9
-    Compatibility: `>=IE6`,
-    // 协议，默认MIT
+    Compatibility: ``,
+    // 协议，默认MIT（协议内容自行补充）
     LICENSE: `MIT`
 }
+//.......Conf End ......................
 
 const cssfilename = confs.Author + '_' + confs.forWhat + '.css';
 const cssHeaders = `
@@ -50,7 +51,6 @@ const cssHeaders = `
 */
 
 `;
-//.......Conf End ......................
 
 const fs = require('fs');
 const gulp = require('gulp');
