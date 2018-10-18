@@ -14,32 +14,33 @@ const bookConf = {
     confFileName : "book.json",
     confJSON : `
 {
-    "plugins":["navigation","highlight"],
-    "pluginsConfig":{
-        "navigation":{
-            "logo":{
-                "image":"https://",
-                "url":"https://www.kancloud.cn/@pwedu"
+    "plugins": [
+        "navigation",
+        "highlight"
+    ],
+    "pluginsConfig": {
+        "navigation": {
+            "logo": {
+                "image": "https://",
+                "url": "https://www.kancloud.cn/@pwedu"
             },
-            "nav":[
+            "nav": [
                 {
-                    "title":"导航1 请自行修改",
-                    "url":"https://www.npmjs.com/package/kc-cli"
+                    "title": "导航1 请自行修改",
+                    "url": "https://www.npmjs.com/package/kc-cli"
                 },
                 {
-                    "title":"导航2 请自行修改",
-                    "url":"https://github.com/YYago/kc-cli"
+                    "title": "导航2 请自行修改",
+                    "url": "https://github.com/YYago/kc-cli"
                 },
                 {
-                    "title":"导航3 请自行修改",
-                    "url":"https://github.com/YYago/kc-cli/issues"
-                }                
-                ]
-            }
+                    "title": "导航3 请自行修改",
+                    "url": "https://github.com/YYago/kc-cli/issues"
+                }
+            ]
         }
     }
-}        
-      
+}      
 `
 }
 const kcOutDir = {

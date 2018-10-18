@@ -40,7 +40,7 @@ if (arg2 == "-h") {
     console.log(kc_log.done('.gitignore 处理完毕！'))
     // --------- kc summary ---------
 } else if (arg2 == "summary" && arg3 == undefined) {
-    sb.SBer_summaryMDs(['-t'])
+    sb.SBer_summaryMDs_onlyKCKLI(['-t'])
     console.log(kc_log.done(`临时目录文件已经生成，位置：${process.cwd()}\\_summary.md`));
     // --------- kc summary [dir...] ---------
 } else if (arg2 == "summary" && arg3 !== undefined) {
@@ -48,7 +48,7 @@ if (arg2 == "-h") {
     for (let i = 3; i < arg.length; i++) {
         opts.push(arg[i]);
     }
-    sb.SBer_summaryMDs(['-t', ...opts]);
+    sb.SBer_summaryMDs_onlyKCKLI(['-t', ...opts]);
     console.log(kc_log.done(`临时目录文件已经生成，位置：${process.cwd()}\\_summary.md`));
     // --------- kc md ---------
 } else if (arg2 == "md") {
