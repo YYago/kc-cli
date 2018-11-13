@@ -27,6 +27,14 @@ Maybe this package is only suitable for Chinese users.
 
 ## 版本
 
+#### v2.0.0
+
+* 移除对 `pandoc` 的支持。 *它在这并不完美，用着也是闹心，有需要的可另外探究*。
+* 更具体地操作文档配置(增、删插件；撰写文档摘要；增、删、追加 `style/website.css`)。
+* 支持从主题分支([Branch: themes]())中使用主题名作为下载地址。`kc themes 'xiak_full'`。 注意与 `theme` 区别开来。
+* 新增命令(参数)：
+    * `kc themes [list|li|-l]`，获取 kc-cli 仓库 `themes`分支下的可用样式文件，便于下载使用。
+
 #### v1.0.4
 
 * Fix: 子目录需要缩进4个空格。

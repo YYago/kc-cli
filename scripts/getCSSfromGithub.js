@@ -21,7 +21,7 @@
 const fs = require('fs');
 const https = require('https');
 /**
- * @description 从 GitHub 获取源代码 （使用了 GitHub 的代码文件 Raw 功能）
+ * @description 获取远程地址的CSS文件（其实可以是任何可读chunk）
  * 
  * @param {URL} cssURL CSS文件在GitHub 上 Raw 的地址，注意： 参数值只能是类似这样的地址“https://raw.githubusercontent.com/.....”
  * @param {path} saveTo 保存路径，保存到哪。
