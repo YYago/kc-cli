@@ -1,5 +1,7 @@
 # kc-cli 看云文档CLI工具
 
+## 仓库不再维护!替代者：[summarymd](https://www.npmjs.com/package/summarymd)
+
 Maybe this package is only suitable for Chinese users.
 
 你需要了解：这个包不是看云官方开发，为避免不必要的麻烦，请先试用。具体的使用示例前往kc-cli主页（[>>>点击前往>>>](https://www.kancloud.cn/pwedu/kccli)）
